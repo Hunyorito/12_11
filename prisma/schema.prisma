@@ -14,3 +14,22 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+model Gyerek{
+  id          Int      @id @default(autoincrement())
+  nev         String
+  cim         String
+  jo Boolean
+  
+  //games      games[]
+  gamesId    Int? 
+  
+  gamek       games ?   @relation(fields: [gamesId], references: [id], onDelete: SetNull, onUpdate: Cascade)
+}
+model games{
+  id          Int      @id @default(autoincrement())
+  nev         String
+  anyag       String
+  suly        Float
+  gerekek     Gyerek[] //@unique
+  
+}
