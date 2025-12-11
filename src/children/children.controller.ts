@@ -37,6 +37,10 @@ export class ChildrenController {
   findOne(@Param('id') id: string) {
     return this.childrenService.findOne(+id);
   }
+  @Patch(':id/rosz')
+  rosszalkodik(@Param('id') id: string) {
+    return this.childrenService.rossz(+id);
+  }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateChildDto: UpdateChildDto) {

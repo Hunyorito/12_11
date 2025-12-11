@@ -79,4 +79,14 @@ export class ChildrenService {
     }
     else{ return remove};
   }
+  async rossz(id: number) {
+    const find= await this.db.gyerek.update({
+      where: { id },
+      data: { jo: false, gamesId: null } 
+
+    });
+    if (!find) {
+      throw new HttpException(`Child with ID ${id} not found`,404);
+    }else{ return find};
+  }
 }
