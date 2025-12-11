@@ -34,7 +34,7 @@ export class ChildrenService {
     });
     if (!find) {
       throw new HttpException(`Child with ID ${id} not found`,404);
-    } return find;
+    }else{ return find};
   }
   create(createChildDto: CreateChildDto) {
     return this.db.gyerek.create({
@@ -55,7 +55,8 @@ export class ChildrenService {
     if (!find) {
       throw new HttpException(`Child with ID ${id} not found`,404);
     }
-    return find;
+    else{ return find}
+    
   }
 
   async update(id: number, updateChildDto: UpdateChildDto) {
@@ -66,7 +67,7 @@ export class ChildrenService {
     if (!find) {
       throw new HttpException(`Child with ID ${id} not found`,404);
     }
-    return find;
+    else{ return find};
   }
 
   async remove(id: number) {
@@ -76,6 +77,6 @@ export class ChildrenService {
     if (!remove) {
       throw new HttpException(`Child with ID ${id} not found`,404);
     }
-    return remove;
+    else{ return remove};
   }
 }

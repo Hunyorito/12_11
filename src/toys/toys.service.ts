@@ -7,6 +7,7 @@ import { CreateToyDto } from './dto/create-toy.dto';
 import { UpdateToyDto } from './dto/update-toy.dto';
 import { PrismaService } from 'src/prisma.service';
 
+
 @Injectable()
 export class ToysService {
   constructor(private readonly db: PrismaService) {}
@@ -29,7 +30,8 @@ export class ToysService {
     if (!found) {
       throw new HttpException(`Toy with ID ${id} not found`,404);
     }
-    return found;
+    else{
+    return found};
   }
 
   async update(id: number, updateToyDto: UpdateToyDto) {
@@ -40,17 +42,19 @@ export class ToysService {
     if (!updata) {
       throw new Error(`Toy with ID ${id} not found`);
     }
-    return updata;
+    else{
+    return updata};
   }
 
-  remove(id: number) {
-    const remove= this.db.games.delete({
+  async remove(id: number) {
+    const remo=await this.db.games.delete({
       where: { id },
     });
-    if (!remove) {
+    if (!remo) {
       throw new Error(`Toy with ID ${id} not found`);
     }
-    return remove;
+    else{
+    return remo};
 
   }
 }
